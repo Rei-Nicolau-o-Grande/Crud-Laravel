@@ -55,7 +55,7 @@
 
             <div class="form-group">
                 <label for="description" class="form-label mb-2">Descrição:</label>
-                <textarea type="text" name="description" class="form-control" placeholder="Descrição do evento" >
+                <textarea id="editor" type="text" name="description" class="form-control" placeholder="Descrição do evento" >
                     {{ $event->description }}
                 </textarea>
             </div>
@@ -63,5 +63,12 @@
             <input type="submit" class="btn btn-primary mt-3" value="Editar Evento">
         </form>
     </div>
+
+    <script>
+        CKEDITOR.replace('editor', {
+            filebrowserUploadUrl: "{{ route('upload.image', ['_token' => csrf_token()]) }}",
+            filebrowserUploadMethod: 'form'
+        })
+    </script>
 
 @endsection

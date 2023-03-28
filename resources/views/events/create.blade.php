@@ -5,22 +5,22 @@
 @section('content')
 
     <div class="col-md-6 offset-md-3">
-        <form action="/events" method="post">
+        <form action="/events" method="post" enctype="multipart/form-data">
             @csrf
             <h1 class="text-center">Crie um evento</h1>
             <div class="form-group">
                 <label for="title" class="form-label mb-2">Titulo do Evento:</label>
-                <input type="text" name="title" class="form-control">
+                <input type="text" name="title" class="form-control" required>
             </div>
 
             <div class="form-group">
                 <label for="date" class="form-label mb-2">Data do Evento:</label>
-                <input type="date" name="date" class="form-control" placeholder="Data do Evento">
+                <input type="date" name="date" class="form-control" placeholder="Data do Evento" required>
             </div>
 
             <div class="form-group">
                 <label for="city" class="form-label mb-2">Cidade:</label>
-                <input type="text" name="city" class="form-control" placeholder="Cidade do evento">
+                <input type="text" name="city" class="form-control" placeholder="Cidade do evento" required>
             </div>
 
             <div class="form-group">
@@ -55,11 +55,20 @@
 
             <div class="form-group">
                 <label for="description" class="form-label mb-2">Descrição:</label>
-                <textarea type="text" name="description" class="form-control" placeholder="Descrição do evento">
+                <textarea id="editor" type="text" name="description" class="form-control" placeholder="Descrição do evento" required>
                 </textarea>
             </div>
 
             <input type="submit" class="btn btn-primary mt-3" value="Cria Evento">
         </form>
     </div>
+
+    <script>
+        CKEDITOR.replace('editor', {
+            filebrowserUploadUrl: "{{ route('upload.image', ['_token' => csrf_token()]) }}",
+            filebrowserUploadMethod: 'form',
+        });
+
+    </script>
+
 @endsection

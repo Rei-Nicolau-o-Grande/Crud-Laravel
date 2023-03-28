@@ -14,6 +14,8 @@
         <!-- CSS da Aplicação -->
         <link rel="stylesheet" href="/css/styles.css">
         <link rel="stylesheet" href="/js/scripts.js">
+        <meta name="csrf-token" content="{{ csrf_token() }}" />
+        <script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
 
     </head>
     <body class="">

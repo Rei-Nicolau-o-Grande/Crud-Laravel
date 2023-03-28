@@ -4,7 +4,7 @@
 
 @section('content')
     <h1>Helo Word</h1>
-    <div class="col-md-10 offset-md-1">
+    <div class="col-md-6 offset-md-1">
         <a href="/events/edit/{{ $event->id }}"><button type="submit" class="btn btn-info"><ion-icon name="create-outline"></ion-icon>Editar Evento</button></a>
         <form action="/events/{{ $event->id }}" method="post">
             @csrf
@@ -13,10 +13,8 @@
         </form>
         <h2>{{ $event->title }}</h2>
         <p><b>Cidade: </b><ion-icon name="location-outline"></ion-icon> {{ $event->city }}</p>
-        <p> X participantes</p>
-        <p>Dono do Evento</p>
         <p><b>O evento é privado: </b>{{ $event->private == 0 ? 'Não' : 'Sim' }}</p>
-        <p><b>Descrição: </b>{{ $event->description }}</p>
+        <p><b>Descrição: </b>{!! ($event->description ) !!}</p>
         <div class="card-date">{{ date('d/m/Y', strtotime($event->date)) }}</div>
         <a class="btn btn-primary">Confirmar Presença</a>
         <h3>O evento conta com:</h3>

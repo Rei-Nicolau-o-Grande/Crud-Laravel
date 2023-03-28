@@ -19,6 +19,7 @@ Route::get('/', [EventController::class, 'index']); // index monstar todos os re
 Route::get('/events/create', [EventController::class, 'create']); // create mostrar o formulário de criação
 Route::get('/events/{id}', [EventController::class, 'show']); // show mostrar um registro específico
 Route::post('/events', [EventController::class, 'store']); // store salvar o registro no banco de dados
+Route::post('/upload-image', [EventController::class, 'storeImage'])->name('upload.image');
 Route::delete('/events/{id}', [EventController::class, 'destroy']); // destroy deletar um registro específico
 Route::get('/events/edit/{id}', [EventController::class, 'edit']); // edit mostrar o formulário de edição
 Route::put('/events/update/{id}', [EventController::class, 'update']); // update salvar as alterações no banco de dados
